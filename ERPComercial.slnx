@@ -1,1 +1,6 @@
-<Solution />
+<Solution>
+  <Project Path="ERPComercial.Aplicacao/ERPComercial.Aplicacao.csproj" />
+  <Project Path="ERPComercial.Apresentacao/ERPComercial.Apresentacao.csproj" />
+  <Project Path="ERPComercial.Dominio/ERPComercial.Dominio.csproj" />
+  <Project Path="ERPComercial.Infraestrutura/ERPComercial.Infraestrutura.csproj" />
+</Solution>
