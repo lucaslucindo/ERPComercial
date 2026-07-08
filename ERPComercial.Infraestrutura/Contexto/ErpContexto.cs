@@ -13,6 +13,7 @@ public class ErpContexto : DbContext
     public DbSet<Fornecedor> Fornecedores { get; set; } = null!;
     public DbSet<Venda> Vendas { get; set; } = null!;
     public DbSet<ItemVenda> ItensVenda { get; set; } = null!;
+    public DbSet<ContaAReceber> ContasAReceber { get; set; } = null!;
 
     // Método onde configura as regras do banco (Fluent API)
     protected override void OnModelCreating(ModelBuilder construtorDeModelos)
@@ -62,6 +63,17 @@ public class ErpContexto : DbContext
             entidade.HasOne(i => i.Produto)
                     .WithMany()
                     .HasForeignKey(i => i.CodigoProduto);
+        });
+
+        // Mapeamento da Tabela de Contas a Receber
+        construtorDeModelos.Entity<ContaAReceber>(entidade =>
+        {
+            entidade.ToTable("tb_contas_a_receber");
+            entidade.HasKey(c => c.CodigoContaReceber);
+            entidade.Property(c => c.Valor).HasColumnType("decimal(18,2)");
+
+            // Configura o Enum para ser salvo como número inteiro no banco de dados
+            entidade.Property(c => c.Status).HasConversion<int>();
         });
     }
 }

@@ -16,6 +16,8 @@ builder.Services.AddScoped<IServicoDeProduto, ServicoDeProduto>();
 builder.Services.AddScoped<IRepositorioDeVenda, RepositorioDeVenda>();
 builder.Services.AddScoped<IServicoDeVenda, ServicoDeVenda>();
 
+builder.Services.AddScoped<IRepositorioDeContaAReceber, RepositorioDeContaAReceber>();
+
 // Configuração do Swagger para documentação da API
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
