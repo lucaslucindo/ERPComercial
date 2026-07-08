@@ -9,8 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Adiciona os serviços da API
 builder.Services.AddControllers();
+
 builder.Services.AddScoped<IRepositorioDeProduto, RepositorioDeProduto>();
 builder.Services.AddScoped<IServicoDeProduto, ServicoDeProduto>();
+
+builder.Services.AddScoped<IRepositorioDeVenda, RepositorioDeVenda>();
+builder.Services.AddScoped<IServicoDeVenda, ServicoDeVenda>();
 
 // Configuração do Swagger para documentação da API
 builder.Services.AddEndpointsApiExplorer();
