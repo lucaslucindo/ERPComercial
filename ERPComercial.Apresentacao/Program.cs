@@ -1,10 +1,16 @@
+using ERPComercial.Aplicacao.Contratos;
+using ERPComercial.Aplicacao.Servicos;
+using ERPComercial.Dominio.Contratos;
 using ERPComercial.Infraestrutura.Contexto;
+using ERPComercial.Infraestrutura.Repositorios;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Adiciona os serviços da API
 builder.Services.AddControllers();
+builder.Services.AddScoped<IRepositorioDeProduto, RepositorioDeProduto>();
+builder.Services.AddScoped<IServicoDeProduto, ServicoDeProduto>();
 
 // Configuração do Swagger para documentação da API
 builder.Services.AddEndpointsApiExplorer();
