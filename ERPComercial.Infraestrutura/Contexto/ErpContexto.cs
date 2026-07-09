@@ -75,5 +75,17 @@ public class ErpContexto : DbContext
             // Configura o Enum para ser salvo como número inteiro no banco de dados
             entidade.Property(c => c.Status).HasConversion<int>();
         });
+
+        // Mapeamento da Tabela de Notas Fiscais
+        construtorDeModelos.Entity<NotaFiscal>(entidade =>
+        {
+            entidade.ToTable("tb_notas_fiscais");
+            entidade.HasKey(n => n.CodigoNotaFiscal);
+
+            // Relacionamento 1 para 1: Uma venda tem uma nota fiscal
+            entidade.HasOne(n => n.Venda)
+                    .WithOne()
+                    .HasForeignKey<NotaFiscal>(n => n.CodigoVenda);
+        });
     }
 }

@@ -3,6 +3,7 @@ using ERPComercial.Aplicacao.Servicos;
 using ERPComercial.Dominio.Contratos;
 using ERPComercial.Infraestrutura.Contexto;
 using ERPComercial.Infraestrutura.Repositorios;
+using ERPComercial.Infraestrutura.ServicosExternos;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,8 @@ builder.Services.AddScoped<IRepositorioDeVenda, RepositorioDeVenda>();
 builder.Services.AddScoped<IServicoDeVenda, ServicoDeVenda>();
 
 builder.Services.AddScoped<IRepositorioDeContaAReceber, RepositorioDeContaAReceber>();
+
+builder.Services.AddScoped<IServicoFiscalSefaz, ServicoFiscalSefaz>();
 
 // Configuração do Swagger para documentação da API
 builder.Services.AddEndpointsApiExplorer();
